@@ -1,5 +1,6 @@
 const DOMAIN_URL = "https://grok.com";
 const ASSETS_URL = "https://assets.grok.com";
+const COOKIE = Deno.env.get("cookie");
 
 export async function handleGrokRequest (req) {
 
@@ -43,7 +44,9 @@ export async function handleGrokRequest (req) {
     }
 
     //实际用这个cookie请求grok
-    headers.set("cookie", grokCookie || '');
+   // headers.set("cookie", grokCookie || '');
+    headers.delete("Cookie");
+    headers.set("cookie", COOKIE || '');
     headers.delete("Referer");
     //删除可能暴露IP的请求头
     headers.delete('CF-Connecting-IP');
