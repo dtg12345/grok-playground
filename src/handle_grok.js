@@ -46,8 +46,8 @@ export async function handleGrokRequest (req) {
     //实际用这个cookie请求grok
    // headers.set("cookie", grokCookie || '');
 
-    headers.set("Host", targetUrl.host);
-    headers.delete("Referer");
+
+
     headers.delete("Cookie");
     headers.delete("Authorization"); // 删除验证头，不转发到目标服务器
     headers.set("cookie", COOKIE || '');
